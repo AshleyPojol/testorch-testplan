@@ -55,7 +55,7 @@
             </elementProp>
             <elementProp name="influxdbUrl" elementType="HTTPArgument">
               <stringProp name="Argument.name">influxdbUrl</stringProp>
-              <stringProp name="Argument.value">http://192.168.1.12:8086/api/v2/write?org=testorch&amp;bucket=jmeter</stringProp>
+              <stringProp name="Argument.value">http://192.168.1.12:8086/api/v2/write?org=testorch$bucket=testorch</stringProp>
               <stringProp name="HTTPArgument.always_encode">false</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
               <boolProp name="HTTPArgument.use_equals">true</boolProp>
