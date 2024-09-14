@@ -2,36 +2,97 @@
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
   <hashTree>
     <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="InfluxDB Backend Listener" enabled="true">
-    <elementProp name="arguments" elementType="Arguments">
+      <elementProp name="arguments" elementType="Arguments">
         <collectionProp name="Arguments.arguments">
-            <elementProp name="influxdb.url" elementType="HTTPArgument">
-                <stringProp name="Argument.name">influxdb.url</stringProp>
-                <stringProp name="Argument.value">http://172.22.240.1:8086/write?db=jmeter</stringProp>
-                <stringProp name="HTTPArgument.always_encode">false</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-            </elementProp>
-            <elementProp name="influxdb.application" elementType="HTTPArgument">
-                <stringProp name="Argument.name">influxdb.application</stringProp>
-                <stringProp name="Argument.value">constantload_test</stringProp>
-                <stringProp name="HTTPArgument.always_encode">false</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-            </elementProp>
-            <elementProp name="influxdb.measurement" elementType="HTTPArgument">
-                <stringProp name="Argument.name">influxdb.measurement</stringProp>
-                <stringProp name="Argument.value">jmeter</stringProp>
-                <stringProp name="HTTPArgument.always_encode">false</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-            </elementProp>
+          <elementProp name="influxdbMetricsSender" elementType="HTTPArgument">
+            <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+            <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="influxdbUrl" elementType="HTTPArgument">
+            <stringProp name="Argument.name">influxdbUrl</stringProp>
+            <stringProp name="Argument.value">http://172.22.240.1:8086/api/v2/write?org=testorch&amp;bucket=jmeter</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="application" elementType="HTTPArgument">
+            <stringProp name="Argument.name">application</stringProp>
+            <stringProp name="Argument.value">application name</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="measurement" elementType="HTTPArgument">
+            <stringProp name="Argument.name">measurement</stringProp>
+            <stringProp name="Argument.value">jmeter</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="summaryOnly" elementType="HTTPArgument">
+            <stringProp name="Argument.name">summaryOnly</stringProp>
+            <stringProp name="Argument.value">true</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="samplersRegex" elementType="HTTPArgument">
+            <stringProp name="Argument.name">samplersRegex</stringProp>
+            <stringProp name="Argument.value">*</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="percentiles" elementType="HTTPArgument">
+            <stringProp name="Argument.name">percentiles</stringProp>
+            <stringProp name="Argument.value">90;95;99</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="testTitle" elementType="HTTPArgument">
+            <stringProp name="Argument.name">testTitle</stringProp>
+            <stringProp name="Argument.value">Test name</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="eventTags" elementType="HTTPArgument">
+            <stringProp name="Argument.name">eventTags</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="influxdbToken" elementType="HTTPArgument">
+            <stringProp name="Argument.name">influxdbToken</stringProp>
+            <stringProp name="Argument.value">6_NhBpzUtk-2Zw2d9HJ9oyhOwdPbfZ1wqMbsv8z_jofNaKMVRGSqGLWryTc5SYe7_e1lclzwooZR6YcErhPetA==</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="influxdbBucket" elementType="HTTPArgument">
+            <stringProp name="Argument.name">influxdbBucket</stringProp>
+            <stringProp name="Argument.value">jmeter</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
+          <elementProp name="influxdbOrganization" elementType="HTTPArgument">
+            <stringProp name="Argument.name">influxdbOrganization</stringProp>
+            <stringProp name="Argument.value">testorch</stringProp>
+            <stringProp name="HTTPArgument.always_encode">false</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+          </elementProp>
         </collectionProp>
-    </elementProp>
-    <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
-</BackendListener>
+      </elementProp>
+      <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+    </BackendListener>
 
-  </hashTree>
-  <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Constant Load Test" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
